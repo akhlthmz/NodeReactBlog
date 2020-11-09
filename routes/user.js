@@ -1,0 +1,60 @@
+const express = require("express");
+const router = express.Router();
+const { check, validationResult } = require("express-validator");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const config = require("config");
+const secretKey = config.get("JWT_SECRET");
+const connection = require("../config/connectDb")
+const query = require('../config/queryDB')
+
+//Authenticate user and get token 
+
+router.post('/login',[
+    check("userName", "Please include a valid username").not().isEmpty(),
+    check("password", "Password is required").exists(),
+], async (req,res)=>{
+    const {userName,password} = req.body
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    }
+    try{
+        let sql = "SELECT * FROM Blog.Users AS users WHERE users.userName = ? "
+        
+        const test = await query(sql,[userName])
+        .then(res => res)
+        .catch(err=>console.log(err))
+
+        if(test.length===0){
+            return res
+            .status(400)
+            .json({ errors: [{ msg: "Invalid username or password" }] });
+        }
+        const isMatch = await bcrypt.compare(password,test[0].password)
+        if (!isMatch) {
+            return res
+              .status(400)
+              .json({ errors: [{ msg: "Invalid username or password" }] });
+          }
+        
+        const payload = {
+            user: {
+              name: userName
+            },
+          }
+        jwt.sign(payload,secretKey,{expiresIn:36000},(err,token)=>{
+            if(err) throw err
+            res.json({token})
+        })
+
+    }catch(err){
+      console.log(err.message);
+      res.status(500).send("Server error");
+    }
+    
+})
+
+
+module.exports = router;
