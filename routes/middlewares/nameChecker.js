@@ -1,4 +1,3 @@
-const connection = require("../../config/connectDb")
 const query = require('../../config/queryDB')
 
 module.exports = async function isUserNameUnique(req,res,next){

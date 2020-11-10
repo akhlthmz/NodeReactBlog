@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const config = require("config");
 const secretKey = config.get("JWT_SECRET");
-const connection = require("../config/connectDb")
 const query = require('../config/queryDB')
 
 //Authenticate user and get token 

@@ -15,6 +15,7 @@ connection.connect(function(err) {
       return;
     }
     console.log('Connected to MySql database .');
+    
   });
 
 module.exports = connection
