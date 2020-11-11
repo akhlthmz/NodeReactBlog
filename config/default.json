@@ -1,8 +1,0 @@
-{
-    "HOST":"node.c51wtzu7upbh.ca-central-1.rds.amazonaws.com" ,
-    "USER":"admin" ,
-    "PASSWORD":"akhilThomas01" ,
-    "PORT": 3306,
-    "JWT_SECRET": "myBlogSecretKey"
-  }
-  
