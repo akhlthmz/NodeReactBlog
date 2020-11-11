@@ -6,6 +6,20 @@ const bcrypt = require("bcryptjs");
 const config = require("config");
 const secretKey = config.get("JWT_SECRET");
 const query = require('../config/queryDB')
+const auth = require('./middlewares/auth')
+
+router.get('/getuser',auth,async(req,res)=>{
+  try{
+    const sql1 = "SELECT userName FROM Blog.Users WHERE userName = ?"
+    const user = await query(sql1,[req.user.name]) 
+    res.json(user)
+
+  }catch(err){
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+})
+
 
 //Authenticate user and get token 
 
@@ -20,7 +34,7 @@ router.post('/login',[
       return res.status(400).json({ errors: errors.array() })
     }
     try{
-        let sql = "SELECT * FROM Blog.Users AS users WHERE users.userName = ? "
+        const sql = "SELECT * FROM Blog.Users AS users WHERE users.userName = ? "
         
         const test = await query(sql,[userName])
         .then(res => res)
