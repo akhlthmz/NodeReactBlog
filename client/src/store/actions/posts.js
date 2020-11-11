@@ -10,7 +10,6 @@ export const CLEAR_POSTS = "CLEAR_POSTS";
 export const getPosts = () => async (dispatch) => {
   try {
     const res = await axios.get("http://localhost:5000/articles/");
-    console.log(res.data);
 
     dispatch({
       type: GET_POSTS,

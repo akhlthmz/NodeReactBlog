@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getPosts } from "../store/actions/posts";
+import { loadUser } from "../store/actions/auth";
 import Card from "./Card";
 import Form from "./Form";
 import { makeStyles, CssBaseline, Container, Paper } from "@material-ui/core";
@@ -16,10 +17,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Dashboard({ getPosts, postsSorted }) {
+function Dashboard({ getPosts, loadUser, postsSorted }) {
   useEffect(() => {
+    loadUser();
     getPosts();
-  }, []);
+  }, [loadUser, getPosts]);
 
   const classes = useStyles();
 
@@ -30,8 +32,8 @@ function Dashboard({ getPosts, postsSorted }) {
         <Paper elevation={3} className={classes.paper}>
           <Form />
 
-          {postsSorted.map((post) => (
-            <Card post={post} key={post.articleId} />
+          {postsSorted.map((post, index) => (
+            <Card post={post} key={index} />
           ))}
         </Paper>
       </Container>
@@ -47,4 +49,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getPosts })(Dashboard);
+export default connect(mapStateToProps, { getPosts, loadUser })(Dashboard);
