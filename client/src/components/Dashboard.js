@@ -31,6 +31,7 @@ function Dashboard({logout,getPosts,posts}) {
             <Button onClick={onClick} variant="contained" className = {classes.btn} color="primary"  >
                 <strong>Logout</strong>
             </Button>
+            
         </div>
     )
 }
