@@ -1,0 +1,20 @@
+# Set up
+
+clone the repository to your local machine.
+now run the following commands
+
+cd nodeReactBlog
+npm install
+cd client
+npm install
+cd ..
+
+make sure you are in the root directory nodeReactBlog
+
+npm run dev
+
+To run tests use
+
+npm test
+
+Ui tests are done using selenium javascript api.
