@@ -3,13 +3,13 @@
 clone the repository to your local machine.
 now run the following commands
 
-cd nodeReactBlog
+cd NodeReactBlog
 npm install
 cd client
 npm install
 cd ..
 
-make sure you are in the root directory nodeReactBlog
+make sure you are in the root directory NodeReactBlog
 
 npm run dev
 
