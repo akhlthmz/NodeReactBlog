@@ -80,7 +80,7 @@ function Login({ loginUser, isAuthenticated }) {
               margin="normal"
               required
               fullWidth
-              id="username"
+              id="usernameLogin"
               label="Username"
               name="username"
               autoFocus
@@ -102,7 +102,7 @@ function Login({ loginUser, isAuthenticated }) {
               name="password"
               label="Password"
               type="password"
-              id="password"
+              id="passwordLogin"
             />
             {errors.password && (
               <p style={{ color: "crimson" }}>Please enter password</p>
@@ -110,6 +110,7 @@ function Login({ loginUser, isAuthenticated }) {
 
             <Button
               type="submit"
+              id="btnLogin"
               fullWidth
               variant="contained"
               style={{ backgroundColor: "#1976d2", color: "white" }}

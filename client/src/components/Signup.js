@@ -80,7 +80,7 @@ function Signup({ registerUser, isAuthenticated }) {
               margin="normal"
               required
               fullWidth
-              id="username"
+              id="usernameSignup"
               label="Username"
               name="username"
               autoFocus
@@ -104,7 +104,7 @@ function Signup({ registerUser, isAuthenticated }) {
               name="password"
               label="Password"
               type="password"
-              id="password"
+              id="passwordSignup"
             />
             {errors.password && (
               <p style={{ color: "crimson" }}>
@@ -114,6 +114,7 @@ function Signup({ registerUser, isAuthenticated }) {
 
             <Button
               type="submit"
+              id="btnSignup"
               fullWidth
               variant="contained"
               style={{ backgroundColor: "#1976d2", color: "white" }}

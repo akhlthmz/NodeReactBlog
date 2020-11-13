@@ -27,12 +27,22 @@ export default function Welcome() {
       <img src={welcome} alt="welcome" className={classes.image} />
       <div className={classes.root}>
         <Link to="/login" style={{ textDecoration: "none" }}>
-          <Button variant="contained" className={classes.btn} color="primary">
+          <Button
+            id="signIn"
+            variant="contained"
+            className={classes.btn}
+            color="primary"
+          >
             <strong>Sign in</strong>
           </Button>
         </Link>
         <Link to="/signup" style={{ textDecoration: "none" }}>
-          <Button variant="contained" className={classes.btn} color="primary">
+          <Button
+            id="signUp"
+            variant="contained"
+            className={classes.btn}
+            color="primary"
+          >
             <strong>Sign up</strong>
           </Button>
         </Link>

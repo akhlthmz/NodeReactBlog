@@ -74,7 +74,7 @@ const Form = ({ addPost }) => {
             margin="normal"
             required
             fullWidth
-            id="title"
+            id="articleTitle"
             label="Title"
             name="title"
             autoFocus
@@ -98,7 +98,7 @@ const Form = ({ addPost }) => {
             multiline
             fullWidth
             rows={3}
-            id="content"
+            id="articleContent"
             label="content"
             name="content"
           />
@@ -108,6 +108,7 @@ const Form = ({ addPost }) => {
 
           <Button
             type="submit"
+            id="btnCreate"
             fullWidth
             variant="contained"
             style={{ backgroundColor: "green", color: "white" }}
